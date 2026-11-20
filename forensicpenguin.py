@@ -3,9 +3,6 @@ import argparse
 import binary_reader
 
 def main():
-    data_import = {}
-    read_size = 64
-    offset = 0
     parser = argparse.ArgumentParser(
         description="ForensicPenguin: A File Forensics Tool"
     )
@@ -38,9 +35,15 @@ def main():
         parser.error(f"Invalid image file: {image_path}")
     image_size = image_path.stat().st_size
     print(f"Image size: {image_size} bytes")
-    data = binary_reader.read(image_path, offset, read_size)
-    print(f"Read results: {data.hex(' ')}")
+    reader = binary_reader.BinaryReader(image_path)
+    try:
+        reader.open()
 
+        data = reader.read(offset, read_size)
+        print(f"Read results: {data.hex(' ')}")
+
+    finally:
+        reader.close()
 
 if __name__ == "__main__":
     main()
