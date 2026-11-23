@@ -1,0 +1,7 @@
+11/23/2026-
+
+I'm actually a few days into this project and haven't stsarted any notes so I figured that I should.
+
+I've been working in imagebuilder this morning, working on the acquire method. I'm tackling mount validation
+and other safety checks at the moment.
+
